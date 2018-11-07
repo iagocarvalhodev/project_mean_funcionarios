@@ -1,6 +1,6 @@
-const Funcionario = require('../models/funcionario');
+const Funcionario = require('../models/funcionario');   //importo meu modelo para poder fazer operações no banco de dados
 
-const funcionarioController = {};
+const funcionarioController = {};        //inicializo meu controller de funcionarios
 
 // trazer todos os funcionarios
 funcionarioController.getFuncionarios = async (req, res) => {
@@ -23,15 +23,15 @@ funcionarioController.showFuncionario = async (req, res) => {
 
 // atualizar informações do funcionario buscando ele pelo id
 funcionarioController.updateFuncionario = async (req, res) => {
-    const { id } = req.params;
+    const { id } = req.params; //traz o parametro id da rota
     const funcionario = {
         name: req.body.name,
         position: req.body.position,
         office: req.body.office,
         salary: req.body.salary
     }
-
-    funcionarioupdate = await Funcionario.findByIdAndUpdate(id, {$set: funcionario}, {new: true});
+    //pega o id e depois atualiza os dados do funcionario contido no objeto funcionario, nao havendo funcionario com o id solicitado criar um novo funcionario. 
+    funcionarioupdate = await Funcionario.findByIdAndUpdate(id, {$set: funcionario}, {new: true});   
     res.json({ funcionarioupdate });
 }
 

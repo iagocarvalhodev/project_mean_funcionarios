@@ -1,7 +1,8 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const mongoose = require('mongoose');     //inicializo o mongoose
+const { Schema } = mongoose;              //inicializo o schema que esta em mongoose para poder criar o schema no banco
 
 
+// crio o schema com todo os cabos e seus respectivos tipos no banco
 const FuncionarioSchema = new Schema({
     name: { type: String, required: true },
     position: { type: String, required: true },
@@ -10,4 +11,4 @@ const FuncionarioSchema = new Schema({
 });
 
 
-module.exports = mongoose.model('Funcionario', FuncionarioSchema);
+module.exports = mongoose.model('Funcionario', FuncionarioSchema); //aqui crio o modelo no banco

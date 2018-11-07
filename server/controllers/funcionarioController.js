@@ -31,12 +31,14 @@ funcionarioController.updateFuncionario = async (req, res) => {
         salary: req.body.salary
     }
 
-    funcionarioupdate = Funcionario.findByIdAndUpdate(id, {$set: funcionario}, {new: true});
+    funcionarioupdate = await Funcionario.findByIdAndUpdate(id, {$set: funcionario}, {new: true});
     res.json({ funcionarioupdate });
 }
 
+// deletando funcionario
 funcionarioController.deleteFuncionario = async (req, res) => {
-
+    await Funcionario.findByIdAndDelete(req.params.id);
+    res.json({ status: 'Funcionario Deletado' });
 }
 
 

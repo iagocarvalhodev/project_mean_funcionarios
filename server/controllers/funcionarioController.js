@@ -10,7 +10,12 @@ funcionarioController.getFuncionarios = async (req, res) => {
 
 // criar um novo funcionario
 funcionarioController.createFuncionario = async (req, res) =>  {
-    const funcionario = new Funcionario(req.body);
+    const funcionario = new Funcionario({
+        name: req.body.name,
+        position: req.body.position,
+        office: req.body.office,
+        salary: req.body.salary
+    });
     await funcionario.save();
     res.json(funcionario);
 }

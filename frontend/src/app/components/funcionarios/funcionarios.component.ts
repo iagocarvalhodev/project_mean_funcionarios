@@ -17,8 +17,10 @@ export class FuncionariosComponent implements OnInit {
   constructor(private funcionarioService: FuncionarioService) { }
 
   ngOnInit() {
+    this.getFuncionarios();
   }
 
+  // adicionar funcionario
   addFuncionario(form: NgForm){
     this.funcionarioService.postFuncionario(form.value)
       .subscribe(res => {
@@ -27,6 +29,20 @@ export class FuncionariosComponent implements OnInit {
       });
   }
 
+  // trazer todos os funcionarios
+  getFuncionarios() {
+    this.funcionarioService.getFuncionarios()
+      .subscribe(res => {
+          this.funcionarioService.funcionarios = res as Funcionario[];
+          console.log(res);
+      });
+  }
+
+
+
+
+
+  // função para resetar formulario
   resetForm(form?: NgForm) {
     if(form) {
       form.reset();

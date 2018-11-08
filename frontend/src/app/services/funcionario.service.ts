@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class FuncionarioService {
 
   selectedFuncionario: Funcionario;
+  funcionarios: Funcionario[];
 
   readonly URL_API = 'http://localhost:3000/api/funcionarios';
 
@@ -23,6 +24,10 @@ export class FuncionarioService {
 
   putFuncionario(funcionario: Funcionario) {
     return this.http.put(this.URL_API + `/${funcionario._id}`, funcionario);
+  }
+
+  deleteFuncionario(_id: string) {
+    return this.http.delete(this.URL_API + `/${_id}`);
   }
 
 

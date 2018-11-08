@@ -1,6 +1,8 @@
 const express = require('express');   //instanciando o express
 const morgan = require('morgan'); //instanciando o morgan para ver as requisições no terminal
 
+const cors = require('cors');
+
 // inicializo o express na variavel app
 const app = express();
 
@@ -18,6 +20,7 @@ app.set('port', process.env.PORT || 3000);
 // middlewares
 app.use(morgan('dev'));  //inicializo o morgan
 app.use(express.json());  //habilito minha aplicação receber dados em json
+app.use(cors({ origin: 'http://localhost:4200' }));   //estou dando autorização para servidor da porta 4200 (Angular) se comunique com nosso servidor back
 
 
 // routes

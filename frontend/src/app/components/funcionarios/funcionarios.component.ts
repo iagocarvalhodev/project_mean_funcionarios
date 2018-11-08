@@ -26,6 +26,7 @@ export class FuncionariosComponent implements OnInit {
       .subscribe(res => {
         this.resetForm(form);
         M.toast({ html: 'Funcionario Registrado' });
+        this.getFuncionarios();
       });
   }
 

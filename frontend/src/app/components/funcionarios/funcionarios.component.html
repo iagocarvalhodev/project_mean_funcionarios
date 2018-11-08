@@ -29,7 +29,22 @@
       </div>
     </div>
     <div class="col s7">
-
+        <table>
+          <thead>
+            <th>Nome</th>
+            <th>Cargo</th>
+            <th>Escritorio</th>
+            <th>Operações</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let funcionario of funcionarioService.funcionarios">
+              <td>{{ funcionario.name }}</td>
+              <td>{{ funcionario.position }}</td>
+              <td>{{ funcionario.office }}</td>
+              <td>#</td>
+            </tr>
+          </tbody>
+        </table>
     </div>
   </div>
 </div>

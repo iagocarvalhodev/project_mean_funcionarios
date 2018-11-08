@@ -11,6 +11,12 @@
                   <div class="input-field col s12">
                     <input type="text" name="position" #position="ngModel" [(ngModel)]="funcionarioService.selectedFuncionario.position" placeholder="Cargo do Funcionario">
                   </div>
+                  <div class="input-field col s12">
+                    <input type="text" name="office" #office="ngModel" [(ngModel)]="funcionarioService.selectedFuncionario.office" placeholder="Local de Trabalho">
+                  </div>
+                  <div class="input-field col s12">
+                    <input type="text" name="salary" #salary="ngModel" [(ngModel)]="funcionarioService.selectedFuncionario.salary" placeholder="Salario do Funcionario">
+                  </div>
               </div>
           </form>
         </div>

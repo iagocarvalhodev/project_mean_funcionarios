@@ -5,6 +5,7 @@
         <div class="card-content">
           <form #funcionarioForm="ngForm" (ngSubmit)="addFuncionario(funcionarioForm)">
               <div class="row">
+                  <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="funcionarioService.selectedFuncionario._id">
                   <div class="input-field col s12">
                     <input type="text" name="name" #name="ngModel" [(ngModel)]="funcionarioService.selectedFuncionario.name" placeholder="Nome do Funcionario">
                   </div>
@@ -41,7 +42,14 @@
               <td>{{ funcionario.name }}</td>
               <td>{{ funcionario.position }}</td>
               <td>{{ funcionario.office }}</td>
-              <td>#</td>
+              <td>
+                <a (click)="editFuncionario(funcionario)">
+                  <i class="material-icons">edit</i>
+                </a>
+                <a (click)="deleteFuncionario(funcionario._id)">
+                  <i class="material-icons">delete</i>
+                </a>
+              </td>
             </tr>
           </tbody>
         </table>

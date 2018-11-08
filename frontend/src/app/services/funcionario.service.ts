@@ -11,7 +11,9 @@ export class FuncionarioService {
 
   readonly URL_API = 'http://localhost:3000/api/funcionarios';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+      this.selectedFuncionario = new Funcionario();
+   }
 
 
   getFuncionarios() {

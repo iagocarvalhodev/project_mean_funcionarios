@@ -22,12 +22,21 @@ export class FuncionariosComponent implements OnInit {
 
   // adicionar funcionario
   addFuncionario(form: NgForm){
-    this.funcionarioService.postFuncionario(form.value)
+    if(form.value._id){
+      this.funcionarioService.putFuncionario(form.value)
+        .subscribe(res => {
+          this.resetForm(form);
+          M.toast({ html: 'Funcionario Atualizado' });
+          this.getFuncionarios();
+        });
+    } else {
+      this.funcionarioService.postFuncionario(form.value)
       .subscribe(res => {
         this.resetForm(form);
         M.toast({ html: 'Funcionario Registrado' });
         this.getFuncionarios();
       });
+    }
   }
 
   // trazer todos os funcionarios
@@ -36,6 +45,21 @@ export class FuncionariosComponent implements OnInit {
       .subscribe(res => {
           this.funcionarioService.funcionarios = res as Funcionario[];
           console.log(res);
+      });
+  }
+
+  // ediat funcionario
+  editFuncionario(funcionario: Funcionario) {
+    this.funcionarioService.selectedFuncionario = funcionario;
+  }
+
+
+  // deletar funcionario
+  deleteFuncionario(_id: string){
+    this.funcionarioService.deleteFuncionario(_id)
+      .subscribe(res => {
+        M.toast({ html: 'Funcionario Deletado' });
+        this.getFuncionarios();
       });
   }
 

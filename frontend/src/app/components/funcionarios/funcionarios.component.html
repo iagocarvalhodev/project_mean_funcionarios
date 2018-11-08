@@ -17,6 +17,12 @@
                   <div class="input-field col s12">
                     <input type="text" name="salary" #salary="ngModel" [(ngModel)]="funcionarioService.selectedFuncionario.salary" placeholder="Salario do Funcionario">
                   </div>
+                  <div class="card-action">
+                    <div class="input-field col s12">
+                        <button class="btn right">Salvar</button>
+                        <button class="btn left" (click)="resetForm(funcionarioForm)">Limpar</button>
+                    </div>
+                  </div>
               </div>
           </form>
         </div>

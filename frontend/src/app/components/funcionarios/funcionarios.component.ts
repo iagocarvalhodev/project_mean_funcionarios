@@ -45,7 +45,6 @@ export class FuncionariosComponent implements OnInit {
     this.funcionarioService.getFuncionarios()
       .subscribe(res => {
           this.funcionarioService.funcionarios = res as Funcionario[];
-          console.log(res);
       });
   }
 

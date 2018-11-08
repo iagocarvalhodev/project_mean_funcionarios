@@ -22,6 +22,7 @@ export class FuncionariosComponent implements OnInit {
 
   // adicionar funcionario
   addFuncionario(form: NgForm){
+    // se o formulario tiver o id preenchido e pra atualizar
     if(form.value._id){
       this.funcionarioService.putFuncionario(form.value)
         .subscribe(res => {
@@ -29,7 +30,7 @@ export class FuncionariosComponent implements OnInit {
           M.toast({ html: 'Funcionario Atualizado' });
           this.getFuncionarios();
         });
-    } else {
+    } else {  //se não tiver o id preenchido e pra criar um novo funcionario
       this.funcionarioService.postFuncionario(form.value)
       .subscribe(res => {
         this.resetForm(form);
@@ -48,19 +49,21 @@ export class FuncionariosComponent implements OnInit {
       });
   }
 
-  // ediat funcionario
+  // editar funcionario
   editFuncionario(funcionario: Funcionario) {
-    this.funcionarioService.selectedFuncionario = funcionario;
+    this.funcionarioService.selectedFuncionario = funcionario; //seleciona o funcionario e preenche os campos do formulario
   }
 
 
   // deletar funcionario
   deleteFuncionario(_id: string){
-    this.funcionarioService.deleteFuncionario(_id)
+    if(confirm('Tem certeza que quer excluir esse funcionario?')){
+      this.funcionarioService.deleteFuncionario(_id)
       .subscribe(res => {
         M.toast({ html: 'Funcionario Deletado' });
         this.getFuncionarios();
       });
+    }
   }
 
 
